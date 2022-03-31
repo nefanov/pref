@@ -3,25 +3,34 @@ import os
 import subprocess
 
 tools = dict()
-tools.update({'dprofile':
+tools.update({'make':
+              {'default':'cmake ./ && make'},
+              'dprofile':
              {'cache':'--tool=cachegrind',
               'callgraph':'--tool=callgrind'}
              })
 
-if len(sys.argv)<4:
-  print("not enough arguments")
-  sys.exit(1)
-if sys.argv[1] not in tools.keys():
-  print("wrong tool name")
-  sys.exit(1)
-tool = sys.argv[1]
-
-if sys.argv[2] not in tools[tool].keys()
-  print("wrong mode name")
+def run(argv, tools=tools):
+  if len(argv)<3:
+    print("not enough arguments")
     sys.exit(1)
-mode = tools[tool][sys.argv[2]]
+  if argv[1] not in tools.keys():
+    print("wrong tool name")
+    sys.exit(1)
+  tool = argv[1]
 
-args = [tool, mode]
-args += sys.argv[3:]
+  if argv[2] not in tools[tool].keys()
+    print("wrong mode name")
+      sys.exit(1)
+  mode = tools[tool][argv[2]]
 
-p = subprocess.Popen(args)
+  args = [tool, mode]
+  if len(argv)>3:
+    args += argv[3:]
+
+  p = subprocess.Popen(args)
+
+  return
+
+if __name__ == "__main__":
+  run(sys.argv, tools=tools)
