@@ -1,13 +1,14 @@
 import sys
 import os
+import subprocess
 
 tools = dict()
-tools.update({'profile':
-             {'cache':'cache',
+tools.update({'dprofile':
+             {'cache':'--tool=cachegrind',
               'callgraph':'callgraph'}
              })
 
-if len(sys.argv)<2:
+if len(sys.argv)<4:
   print("not enough arguments")
   sys.exit(1)
 if sys.argv[1] not in tools.keys():
@@ -20,3 +21,7 @@ if sys.argv[2] not in tools[tool].keys()
     sys.exit(1)
 mode = tools[tool][sys.argv[2]]
 
+args = [tool, mode]
+args += sys.argv[3:]
+
+p = subprocess.Popen(args)
