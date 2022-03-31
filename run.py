@@ -5,7 +5,7 @@ import subprocess
 tools = dict()
 tools.update({'dprofile':
              {'cache':'--tool=cachegrind',
-              'callgraph':'callgraph'}
+              'callgraph':'--tool=callgrind'}
              })
 
 if len(sys.argv)<4:
