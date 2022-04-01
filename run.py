@@ -3,7 +3,7 @@ import os
 import subprocess
 #default tools
 tools = dict()
-tools.update({'make':
+tools.update({'build':
               {'cmake-build':'cmake ./ && make'
               'make':'make'},
               'dprofile':
