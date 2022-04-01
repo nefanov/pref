@@ -4,7 +4,8 @@ import subprocess
 #default tools
 tools = dict()
 tools.update({'make':
-              {'default':'cmake ./ && make'},
+              {'cmake-build':'cmake ./ && make'
+              'make':'make'},
               'dprofile':
              {'cache':'--tool=cachegrind',
               'callgraph':'--tool=callgrind'}
