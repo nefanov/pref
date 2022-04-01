@@ -3,10 +3,10 @@ import os
 import subprocess
 #default tools
 tools = dict()
-tools.update({'build':
+tools.update({'cmake':
               {'cmake-build':'cmake ./ && make'
               'make':'make'},
-              'dprofile':
+              'valgrind':
              {'cache':'--tool=cachegrind',
               'callgraph':'--tool=callgrind'}
              })
